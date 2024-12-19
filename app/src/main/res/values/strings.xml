@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BluetoothMediaDemo</string>
+    <string name="unknown_song">未知歌曲</string>
+    <string name="unknown_album">未知专辑</string>
+    <string name="unknown_artist">未知艺术家</string>
+    <string name="str_bluetooth_device">蓝牙设备:</string>
+</resources>
