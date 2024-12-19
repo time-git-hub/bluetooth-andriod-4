@@ -15,6 +15,7 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaDescription;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -235,10 +236,18 @@ public class MainActivity extends AppCompatActivity {
     private void updateMediaPlayerInfo(MediaDescription description) {
         Log.d(TAG, "updateMediaPlayerInfo ..description:" + description);
         if (null != description) {
-            Log.e(TAG, "description.getTitle():" + description.getTitle() + "  getSubtitle:" + description.getSubtitle() + "  getDescription:" + description.getDescription());
-            tvMusicName.setText("" + (TextUtils.isEmpty(description.getTitle()) ? getString(R.string.unknown_song) : description.getTitle()));
-            tvMusicArtist.setText("" + (TextUtils.isEmpty(description.getSubtitle()) ? getString(R.string.unknown_artist) : description.getSubtitle()));
-            tvMusicAlbum.setText("" + (TextUtils.isEmpty(description.getDescription()) ? getString(R.string.unknown_album) : description.getDescription()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Log.e(TAG, "description.getTitle():" + description.getTitle() + "  getSubtitle:" + description.getSubtitle() + "  getDescription:" + description.getDescription());
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                tvMusicName.setText("" + (TextUtils.isEmpty(description.getTitle()) ? getString(R.string.unknown_song) : description.getTitle()));
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                tvMusicArtist.setText("" + (TextUtils.isEmpty(description.getSubtitle()) ? getString(R.string.unknown_artist) : description.getSubtitle()));
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                tvMusicAlbum.setText("" + (TextUtils.isEmpty(description.getDescription()) ? getString(R.string.unknown_album) : description.getDescription()));
+            }
         } else {
             tvMusicName.setText("" + (getString(R.string.unknown_song)));
             tvMusicArtist.setText("" + getString(R.string.unknown_artist));
